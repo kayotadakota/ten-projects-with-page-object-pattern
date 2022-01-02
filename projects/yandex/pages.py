@@ -1,4 +1,4 @@
-from locators import HomePageLocators
+from projects.yandex.locators import HomePageLocators
 
 
 class BasePage(object):

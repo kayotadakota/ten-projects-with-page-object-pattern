@@ -1,9 +1,10 @@
 import unittest
 import os
 
-from .. import pages
+
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from projects.yandex.pages import HomePage
 
 
 class TestYandex(unittest.TestCase):
@@ -13,7 +14,7 @@ class TestYandex(unittest.TestCase):
         self.options = Options()
         self.options.add_argument('--start-maximized')
         self.driver = webdriver.Chrome(options=self.options)
-        self.homepage = pages.HomePage(self.driver)
+        self.homepage = HomePage(self.driver)
 
     
     def test_title_is_matches(self):

@@ -16,7 +16,6 @@ class BasePageLocators(object):
         )
 
 
-
 class HomePageLocators(BasePageLocators):
     
 
