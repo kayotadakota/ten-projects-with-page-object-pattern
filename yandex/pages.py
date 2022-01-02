@@ -36,4 +36,9 @@ class HomePage(BasePage):
         input_field.clear()
         input_field.send_keys(text)
 
+
+    def get_username(self) -> None:
+        username = self.driver.find_element(self.locators.get_attr('username'))
+        
+        return username.text
     
