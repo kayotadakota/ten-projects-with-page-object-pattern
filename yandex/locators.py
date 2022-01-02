@@ -28,5 +28,4 @@ class HomePageLocators(BasePageLocators):
         self.password_textbox = (By.CSS_SELECTOR, 'input[name="passwd"]')
         self.not_now_btn = (By.CSS_SELECTOR, 'button[data-t="button:pseudo"]')
         self.username = (By.CSS_SELECTOR, 'span.username')
-        self.title = (By.CSS_SELECTOR, 'title')
 
