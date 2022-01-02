@@ -28,7 +28,7 @@ class HomePage(BasePage):
         btn.click()
 
 
-    def input(self, locator: str, text: str) -> None:
+    def input_text(self, locator: str, text: str) -> None:
         if not isinstance(text, str):
             raise TypeError('Text should be a string')
 
