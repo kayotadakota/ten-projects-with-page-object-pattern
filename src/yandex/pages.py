@@ -27,7 +27,7 @@ class HomePage(BasePage):
 
     def input_text(self, locator: tuple, text: str) -> None:
         if not isinstance(text, str):
-            raise TypeError('Text should be a string')
+            raise TypeError(f'Text should be a string. Passed type {type(text)}')
 
         input_field = self.driver.find_element(*locator)
         input_field.clear()
