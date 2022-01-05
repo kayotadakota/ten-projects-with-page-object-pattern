@@ -28,9 +28,9 @@ class TestYandex(unittest.TestCase):
 
     
     def test_login(self):
-        username = os.environ.get('yandex_username')
-        login = os.environ.get('yandex_email')
-        password = os.environ.get('yandex_password')
+        username = os.environ.get('YANDEX_USERNAME')
+        login = os.environ.get('YANDEX_EMAIL')
+        password = os.environ.get('YANDEX_PASSWORD')
         self.homepage.click_btn(self.homepage.locators.get_attr('login_btn'))
         login_textbox = self.homepage.locators.get_attr('login_textbox')
         self.homepage.input_text(login_textbox, login)
