@@ -28,7 +28,7 @@ class TestYandex(unittest.TestCase):
 
     
     def test_login(self):
-        username = 'kayota1992'
+        username = os.environ.get('yandex_username')
         login = os.environ.get('yandex_email')
         password = os.environ.get('yandex_password')
         self.homepage.click_btn(self.homepage.locators.get_attr('login_btn'))
