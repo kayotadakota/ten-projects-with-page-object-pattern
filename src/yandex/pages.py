@@ -1,4 +1,4 @@
-from projects.yandex.locators import HomePageLocators
+from src.yandex.locators import HomePageLocators
 
 
 class BasePage(object):
@@ -16,11 +16,8 @@ class HomePage(BasePage):
         self.locators = HomePageLocators(self.driver)
 
 
-    def is_title_matches(self, title: str) -> None:
-        if not isinstance(title, str):
-            raise TypeError('Title should be a string')
-
-        return title in self.driver.title
+    def is_title_matches(self) -> None:
+        return 'яндекс' in self.driver.title.lower()
 
 
     def click_btn(self, locator: tuple) -> None:
@@ -28,7 +25,7 @@ class HomePage(BasePage):
         btn.click()
 
 
-    def input_text(self, locator: str, text: str) -> None:
+    def input_text(self, locator: tuple, text: str) -> None:
         if not isinstance(text, str):
             raise TypeError('Text should be a string')
 
@@ -38,7 +35,14 @@ class HomePage(BasePage):
 
 
     def get_username(self) -> None:
-        username = self.driver.find_element(self.locators.get_attr('username'))
+        username = self.driver.find_element(*self.locators.get_attr('username'))
         
         return username.text
     
+    
+    def get_web_element(self, element: str):
+        if not isinstance(element, str):
+            raise TypeError('Element should be a string')
+        
+        element = self.driver.find_element(*self.locators.get_attr(element))
+        return element

@@ -1,10 +1,15 @@
 import unittest
-import os
+import os, sys
 
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from projects.yandex.pages import HomePage
+
+
+curdir = os.path.dirname(os.path.realpath(__file__))
+parentdir = os.path.dirname(curdir)
+sys.path.append(parentdir)
+from src.yandex.pages import HomePage
 
 
 class TestYandex(unittest.TestCase):
@@ -14,25 +19,25 @@ class TestYandex(unittest.TestCase):
         self.options = Options()
         self.options.add_argument('--start-maximized')
         self.driver = webdriver.Chrome(options=self.options)
+        self.driver.get('https://yandex.ru')
         self.homepage = HomePage(self.driver)
 
     
     def test_title_is_matches(self):
-        title = 'Яндекс'
-        self.assertTrue(self.homepage.is_title_matches(title))
+        self.assertTrue(self.homepage.is_title_matches())
 
     
     def test_login(self):
-        username = 'kayota1992'[1:]
+        username = 'kayota1992'
         login = os.environ.get('yandex_email')
         password = os.environ.get('yandex_password')
         self.homepage.click_btn(self.homepage.locators.get_attr('login_btn'))
         login_textbox = self.homepage.locators.get_attr('login_textbox')
         self.homepage.input_text(login_textbox, login)
-        self.homepage.click_btn(self.homepage.locators.get_attr('submit_login_button'))
+        self.homepage.click_btn(self.homepage.locators.get_attr('submit_login_btn'))
         password_textbox = self.homepage.locators.get_attr('password_textbox')
         self.homepage.input_text(password_textbox, password)
-        self.homepage.click_btn(self.homepage.locators.get_attr('submit_login_button'))
+        self.homepage.click_btn(self.homepage.locators.get_attr('submit_login_btn'))
         self.assertEqual(self.homepage.get_username(), username)
 
 
