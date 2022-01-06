@@ -1,4 +1,4 @@
-from locators import HomePageLocators, UserPageLocators
+from src.mangalib.locators import HomePageLocators, UserPageLocators
 
 
 class BasePage(object):
