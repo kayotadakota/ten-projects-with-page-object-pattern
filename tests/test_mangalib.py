@@ -1,6 +1,13 @@
 import unittest
-import page
 import os
+import sys
+
+
+
+curdir = os.path.dirname(os.path.realpath(__file__))
+parentdir= os.path.dirname(curdir)
+sys.path.append(parentdir)
+from src.mangalib import page 
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -38,8 +45,8 @@ class TestMangalib(unittest.TestCase):
 
 
     def test_login(self):
-        self.user_email = os.environ.get('mangalib_email')
-        self.user_password = os.environ.get('mangalib_password')
+        self.user_email = os.environ.get('MANGALIB_EMAIL') 
+        self.user_password = os.environ.get('MANGALIB_PASSWORD')
         self.user_page = page.UserPage(self.driver)
         self.home_page.click_btn(self.home_page.locators.get_attr('login_btn'))
         self.home_page.enter_login(self.user_email)
