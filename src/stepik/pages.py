@@ -1,5 +1,6 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from src.stepik.locators import HomePageLocators
 
 
 class BasePage(object):
@@ -20,7 +21,7 @@ class HomePage(BasePage):
         if not isinstance(title, str):
             raise TypeError('Title should be a string')
 
-        return title in self.driver.title
+        return title in self.driver.title.lower()
 
 
     def click_login_btn(self) -> None:
