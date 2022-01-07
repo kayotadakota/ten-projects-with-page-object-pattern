@@ -26,7 +26,7 @@ class HomePage(BasePage):
 
 
     def click_login_btn(self) -> None:
-        btn = self._find_element(*HomePageLocators.login_btn)
+        btn = self._find_element(HomePageLocators.login_btn)
         btn.click()
 
     
@@ -34,7 +34,7 @@ class HomePage(BasePage):
         if not isinstance(login, str):
             raise TypeError('Login should be a string')
 
-        login_textbox = self._find_element(*HomePageLocators.login_textbox)
+        login_textbox = self._find_element(HomePageLocators.login_textbox)
         login_textbox.clear()
         login_textbox.send_keys(login)
 
@@ -43,13 +43,13 @@ class HomePage(BasePage):
         if not isinstance(password, str):
             raise TypeError('Password should be a string')
         
-        password_textbox = self._find_element(*HomePageLocators.pass_textbox)
+        password_textbox = self._find_element(HomePageLocators.pass_textbox)
         password_textbox.clear()
         password_textbox.send_keys(password)
 
 
     def submit_login_btn(self) -> None:
-        btn = self._find_element(*HomePageLocators.submit_btn)
+        btn = self._find_element(HomePageLocators.submit_btn)
         btn.click()
 
 
