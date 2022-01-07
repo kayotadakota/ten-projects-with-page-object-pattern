@@ -1,3 +1,5 @@
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class BasePage(object):
@@ -6,9 +8,13 @@ class BasePage(object):
         self.driver = driver
 
 
-class HomePage(BasePage):
+    def _find_element(self, locator: tuple) -> WebElement:
+        return WebDriverWait(self.driver, 20).until(
+            EC.presence_of_element_located(*locator)
+        )
 
-    locator = None
+
+class HomePage(BasePage):
 
     def is_title_matches(self, title: str) -> bool:
         if not isinstance(title, str):
@@ -18,8 +24,7 @@ class HomePage(BasePage):
 
 
     def click_login_btn(self) -> None:
-        locator = HomePageLocators.login_btn
-        btn = self.driver.find_element(*locator)
+        btn = self._find_element(*HomePageLocators.login_btn)
         btn.click()
 
     
@@ -27,8 +32,7 @@ class HomePage(BasePage):
         if not isinstance(login, str):
             raise TypeError('Login should be a string')
 
-        locator = HomePageLocators.login_textbox
-        login_textbox = self.driver.find_element(*locator)
+        login_textbox = self._find_element(*HomePageLocators.login_textbox)
         login_textbox.clear()
         login_textbox.send_keys(login)
 
@@ -37,15 +41,13 @@ class HomePage(BasePage):
         if not isinstance(password, str):
             raise TypeError('Password should be a string')
         
-        locator = HomePageLocators.pass_textbox
-        password_textbox = self.driver.find_element(*locator)
+        password_textbox = self._find_element(*HomePageLocators.pass_textbox)
         password_textbox.clear()
         password_textbox.send_keys(password)
 
 
     def submit_login_btn(self) -> None:
-        locator = HomePageLocator.submit_login_btn
-        btn = self.driver.find_element(*locator)
+        btn = self._find_element(*HomePageLocators.submit_btn)
         btn.click()
 
 
