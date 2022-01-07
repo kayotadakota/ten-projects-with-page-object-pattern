@@ -12,7 +12,7 @@ class BasePage(object):
 
     def _find_element(self, locator: tuple) -> WebElement:
         return WebDriverWait(self.driver, 20).until(
-            EC.presence_of_element_located(*locator)
+            EC.presence_of_element_located(locator)
         )
 
 
