@@ -7,4 +7,4 @@ class HomePageLocators(object):
     search_btn = (By.CSS_SELECTOR, '#ember205 button.search-form__submit')
     login_textbox = (By.CSS_SELECTOR, '#id_login_email')
     pass_textbox = (By.CSS_SELECTOR, '#id_login_password')
-    submit_btn = (By.CSS_SELECTOR, '#button[type="submit"]')
+    submit_btn = (By.CSS_SELECTOR, 'button[type="submit"]')
