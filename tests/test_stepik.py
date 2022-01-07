@@ -26,7 +26,7 @@ class TestStepik(unittest.TestCase):
         self.assertTrue(self.homepage.is_title_matches(title))
 
 
-    def login(self):
+    def test_login(self):
         login = os.envrion('STEPIK_LOGIN')
         password = os.environ('STEPIK_PASSWORD')
         self.homepage.click_login_btn()
