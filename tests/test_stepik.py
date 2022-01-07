@@ -27,7 +27,7 @@ class TestStepik(unittest.TestCase):
 
 
     def test_login(self):
-        login = os.envrion('STEPIK_LOGIN')
+        login = os.environ('STEPIK_LOGIN')
         password = os.environ('STEPIK_PASSWORD')
         self.homepage.click_login_btn()
         self.homepage.input_login(login)
