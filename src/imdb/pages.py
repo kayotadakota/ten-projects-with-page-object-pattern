@@ -1,5 +1,3 @@
-import logging
-
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions as EC
@@ -8,8 +6,6 @@ from src.imdb.locators import (
         LoginPageLocators,
         RegisterPageLocators
 )
-
-logging.basicConfig(filename='log.txt', level=logging.INFO)
 
 
 class BasePage(object):
@@ -45,7 +41,6 @@ class RegisterPage(BasePage, RegisterPageLocators):
     
     def is_error_presence(self) -> bool:
         err_msg = self._find_element(self['error_msg'])
-        logging.info(f'Error msg: {err_msg}')
         return err_msg.is_displayed()
 
 
