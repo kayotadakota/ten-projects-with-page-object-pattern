@@ -3,6 +3,10 @@ import unittest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
+curdir = os.path.dirname(os.path.realpath(__file__))
+parentdir= os.path.dirname(curdir)
+sys.path.append(parentdir)
+
 from src.imdb.pages import HomePage
 
 
