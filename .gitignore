@@ -1,6 +1,9 @@
-.env 
+env/ 
+package-lock.json
+node_modules/
 .vscode/
 __pycache__/
-.swn
-.swo
-.swp
+*.swn
+*.swo
+*.swp
+log.txt
