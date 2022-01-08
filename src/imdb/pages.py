@@ -1,7 +1,11 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions as EC
-from src.imdb.locators import HomePageLocators
+from src.imdb.locators import (
+        HomePageLocators,
+        LoginPageLocators,
+        RegisterPageLocators
+)
 
 
 class BasePage(object):
@@ -19,9 +23,20 @@ class BasePage(object):
             EC.presence_of_element_located(locator)
         )
 
-
-class HomePage(BasePage, HomePageLocators):
-
-    def click_button(self, element):
+     
+    def _click_button(self, element: str) -> None:
         btn = self._find_element(self[element])
         btn.click()
+
+
+class HomePage(BasePage, HomePageLocators):
+    pass
+
+
+class LoginPage(BasePage, LoginPageLocators)
+    pass
+
+
+class RegisterPage(BasePage, RegisterPageLocators):
+    pass
+
