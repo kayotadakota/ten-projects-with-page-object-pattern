@@ -1,3 +1,4 @@
+import logging
 import os, sys
 import unittest
 
@@ -74,10 +75,10 @@ class TestImdb(unittest.TestCase):
         self.assertTrue(self.registerpage.is_error_presence())
 
 
-
     def tearDown(self):
         self.driver.close()
     
 
 if __name__ == '__main__':
+    logging.basicConfig(level=logging.INFO)
     unittest.main()
