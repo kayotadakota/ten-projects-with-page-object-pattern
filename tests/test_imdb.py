@@ -34,7 +34,31 @@ class TestImdb(unittest.TestCase):
         new_tab = self.driver.window_handles[1]
         self.driver.switch_to.window(new_tab)
         cur_url = self.driver.current_url
-        self.assertEqual('https://www.facebook.com/imdb/', cur_url)
+        self.assertEqual('https://www.facebook.com/imdb', cur_url)
+
+
+    def test_twitch_is_reachable(self):
+        self.homepage.click_button('twitch')
+        new_tab = self.driver.window_handles[1]
+        self.driver.switch_to.window(new_tab)
+        cur_url = self.driver.current_url
+        self.assertEqual('https://www.twitch.tv/IMDb', cur_url)
+
+
+    def test_twitter_is_reachable(self):
+        self.homepage.click_button('twitter')
+        new_tab = self.driver.window_handles[1]
+        self.driver.switch_to.window(new_tab)
+        cur_url = self.driver.current_url
+        self.assertEqual('https://twitter.com/imdb', cur_url)
+
+
+    def test_youtube_is_reachable(self):
+        self.homepage.click_button('youtube')
+        new_tab = self.driver.window_handles[1]
+        self.driver.switch_to.window(new_tab)
+        cur_url = self.driver.current_url
+        self.assertEqual('https://www.youtube.com/imdb', cur_url)
 
 
     def tearDown(self):
