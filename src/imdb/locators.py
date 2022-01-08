@@ -7,5 +7,5 @@ class HomePageLocators(object):
     instagram = (By.CSS_SELECTOR, 'a[title="Instagram"]')
     twitch = (By.CSS_SELECTOR, 'a[title="Twitch"]')
     twitter = (By.CSS_SELECTOR, 'a[title="Twitter"]')
-    youtube = (By.CSS_SELECTOR, 'a[title="Youtube"]')
+    youtube = (By.CSS_SELECTOR, 'a[title="YouTube"]')
     
