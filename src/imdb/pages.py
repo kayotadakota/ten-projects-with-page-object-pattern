@@ -24,7 +24,7 @@ class BasePage(object):
         )
 
      
-    def _click_button(self, element: str) -> None:
+    def click_button(self, element: str) -> None:
         btn = self._find_element(self[element])
         btn.click()
 
@@ -38,5 +38,8 @@ class LoginPage(BasePage, LoginPageLocators)
 
 
 class RegisterPage(BasePage, RegisterPageLocators):
-    pass
+    
+    def is_error_presence(self) -> bool:
+        err_msg = self._find_element('error_msg')
+        return err_msg.is_displayed()
 
