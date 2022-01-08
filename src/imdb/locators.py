@@ -23,3 +23,4 @@ class RegisterPageLocators(object):
     pass_textbox = (By.CSS_SELECTOR, '#ap_password')
     pass_check_textbox = (By.CSS_SELECTOR, '#ap_password_check')
     create_account_btn = (By.CSS_SELECTOR, '#continue')
+    error_msg = (By.CSS_SELECTOR, '.a-alert-heading')
