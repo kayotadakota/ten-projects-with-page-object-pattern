@@ -8,7 +8,11 @@ curdir = os.path.dirname(os.path.realpath(__file__))
 parentdir= os.path.dirname(curdir)
 sys.path.append(parentdir)
 
-from src.imdb.pages import HomePage
+from src.imdb.pages import (
+        HomePage,
+        LoginPage,
+        RegisterPage
+)
 
 
 class TestImdb(unittest.TestCase):
@@ -59,6 +63,16 @@ class TestImdb(unittest.TestCase):
         self.driver.switch_to.window(new_tab)
         cur_url = self.driver.current_url
         self.assertEqual('https://www.youtube.com/imdb', cur_url)
+    
+
+    def test_cannot_create_account_with_empty_fields(self):
+        self.loginpage = LoginPage(self.driver)
+        self.registerpage = RegisterPage(self.driver)
+        self.homepage.click_button('login_btn')
+        self.loginpage.click_button('create_new_account_btn')
+        self.registerpage.click_button('create_account_btn')
+        self.assertTrue(self.registerpage.is_error_presence())
+
 
 
     def tearDown(self):
