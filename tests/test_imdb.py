@@ -28,10 +28,18 @@ class TestImdb(unittest.TestCase):
         cur_url = self.driver.current_url
         self.assertEqual('https://www.instagram.com/imdb/', cur_url)
 
+    
+    def test_facebook_is_reachable(self):
+        self.homepage.click_button('facebook')
+        new_tab = self.driver.window_handles[1]
+        self.driver.switch_to.window(new_tab)
+        cur_url = self.driver.current_url
+        self.assertEqual('https://www.facebook.com/imdb/', cur_url)
+
 
     def tearDown(self):
         self.driver.close()
-
+    
 
 if __name__ == '__main__':
     unittest.main()
