@@ -3,7 +3,6 @@ import os
 import sys
 
 
-
 curdir = os.path.dirname(os.path.realpath(__file__))
 parentdir= os.path.dirname(curdir)
 sys.path.append(parentdir)
