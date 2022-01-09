@@ -21,6 +21,7 @@ class TestImdb(unittest.TestCase):
     def setUp(self):
         self.options = Options()
         self.options.add_argument('--start-maximized')
+        self.options.page_load_strategy = 'eager'
         self.driver = webdriver.Chrome(options=self.options)
         self.driver.get('https://www.imdb.com/')
         self.homepage = HomePage(self.driver)
