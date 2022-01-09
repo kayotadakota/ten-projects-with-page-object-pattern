@@ -1,4 +1,5 @@
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions as EC
@@ -52,3 +53,26 @@ class HomePage(BasePage, HomePageLocators):
         search_box.send_keys(Keys.ENTER)
 
         return cur_url == self.driver.current_url
+
+
+    def search_result_persists_after_page_is_being_reloaded(self) -> bool:
+        search_box = self._find_element(self['search_box'])
+        search_box = clear()
+        search_box = send_keys('aion')
+
+        actions = ActionChains(self.driver)
+        actions.send_keys(Keys.F5)
+        actions.perform()
+
+        search_box = self._find_element(self['search_box'])
+        value = search_box.get_property('value')
+
+        return value == 'aion'
+
+
+
+
+
+
+
+
