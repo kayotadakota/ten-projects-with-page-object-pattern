@@ -29,6 +29,10 @@ class TestTwitch(unittest.TestCase):
         self.assertTrue(self.homepage.empty_search_does_nothing())
 
 
+    def test_search_result_persists_after_page_is_being_reloaded(self):
+        self.assertTrue(self.homepage.search_result_persists_after_page_is_being_reloaded())
+
+
     def tearDown(self):
         self.driver.close()
 
