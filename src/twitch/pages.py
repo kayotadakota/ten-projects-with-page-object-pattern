@@ -58,7 +58,7 @@ class HomePage(BasePage, HomePageLocators):
     def search_result_persists_after_page_is_being_reloaded(self) -> bool:
         search_box = self._find_element(self['search_box'])
         search_box = clear()
-        search_box = send_keys('aion')
+        search_box.send_keys('aion')
 
         actions = ActionChains(self.driver)
         actions.send_keys(Keys.F5)
