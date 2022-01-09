@@ -1,3 +1,4 @@
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions as EC
@@ -31,7 +32,7 @@ class HomePage(BasePage, HomePageLocators):
         ''' It is expected that input value should be automatically reduced
         when it has exceeded allowed limit. '''
 
-        input_data = 'a' * max_length + 1
+        input_data = 'a' * (max_length + 1)
         search_box = self._find_element(self['search_box'])
         search_box.clear()
         search_box.send_keys(input_data)
@@ -48,6 +49,6 @@ class HomePage(BasePage, HomePageLocators):
         search_box = self._find_element(self['search_box'])
         search_box.clear()
         search_box.send_keys('')
-        self.click_button('search_btn')
-        
+        search_box.send_keys(Keys.ENTER)
+
         return cur_url == self.driver.current_url
