@@ -74,5 +74,3 @@ class HomePage(BasePage, HomePageLocators):
 
 
 
-
-
