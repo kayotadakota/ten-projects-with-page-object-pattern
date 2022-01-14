@@ -31,7 +31,9 @@ class BasePage:
 class HomePage(BasePage, HomePageLocators):
     
     def click_register_button(self) -> None:
-        self.click_button('register_btn')
+        self.driver.execute_script(f'''
+            window.open("{self.driver.current_url}auth/signup", "_blank");
+        ''')
         new_tab = self.driver.window_handles[-1]
         self.driver.switch_to.window(new_tab)
 
@@ -44,4 +46,6 @@ class RegisterPage(BasePage, RegisterPageLocators):
         placeholder = field.get_attribute('placeholder')
 
         return aria_required == 'true' and placeholder[-1] == '*'
+
+
 
