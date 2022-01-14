@@ -30,24 +30,24 @@ class TestCambridgeDictionary(unittest.TestCase):
         self.homepage.click_register_button()
         self.assertTrue(self.registerpage.required_field_has_asterisk('email_textbox'))
 
-
+ 
     def test_firstname_has_asterisk(self):
-        self.homepage.click_button('register_btn')
+        self.homepage.click_register_button()
         self.assertTrue(self.registerpage.required_field_has_asterisk('firstname_textbox'))
 
 
     def test_lastname_has_asterisk(self):
-        self.homepage.click_button('register_btn')
+        self.homepage.click_register_button()
         self.assertTrue(self.registerpage.required_field_has_asterisk('lastname_textbox'))
 
 
     def test_password_has_asterisk(self):
-        self.homepage.click_button('register_btn')
+        self.homepage.click_register_button()
         self.assertTrue(self.registerpage.required_field_has_asterisk('pass_textbox'))
 
 
     def test_confirm_password_has_asterisk(self):
-        self.homepage.click_button('register_btn')
+        self.homepage.click_register_button()
         self.assertTrue(self.registerpage.required_field_has_asterisk('confirm_pass_textbox'))
 
 
