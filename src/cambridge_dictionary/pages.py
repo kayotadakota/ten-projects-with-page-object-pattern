@@ -1,4 +1,5 @@
 from selenium.webdriver.remote.webelement import WebElement
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from src.cambridge_dictionary.locators import (
@@ -46,6 +47,28 @@ class RegisterPage(BasePage, RegisterPageLocators):
         placeholder = field.get_attribute('placeholder')
 
         return aria_required == 'true' and placeholder[-1] == '*'
+
+
+    def check_password_strength(self, password: str) -> str:
+        pass_textbox = self._find_element(self['pass_textbox'])
+        pass_textbox.clear()
+        pass_textbox.send_keys(password)
+        pass_textbox.send_keys(Keys.ENTER) 
+        err_msg = self._find_element(self['pass_err_msg'])
+
+        return err_msg.text
+
+    
+    def is_valid_email(self, email: str) -> str:
+        email_textbox = self._find_element(self['email_textbox'])
+        email_textbox.clear()
+        email_textbox.send_keys(email)
+        email_textbox.send_keys(Keys.ENTER)
+        err_msg = self._find_element(self['email_err_msg'])
+
+        return err_msg.text
+
+
 
 
 
