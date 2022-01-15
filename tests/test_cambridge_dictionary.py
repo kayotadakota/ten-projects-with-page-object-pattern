@@ -51,6 +51,30 @@ class TestCambridgeDictionary(unittest.TestCase):
         self.assertTrue(self.registerpage.required_field_has_asterisk('confirm_pass_textbox'))
 
 
+    def test_password_strength(self):
+        self.homepage.click_register_button()
+        self.assertNotEqual(self.registerpage.check_password_strength('aaaaaaaa'), '') 
+        self.assertNotEqual(self.registerpage.check_password_strength('AAAAAAAA'), '')
+        self.assertNotEqual(self.registerpage.check_password_strength('aaaaaaaaa'), '')
+        self.assertNotEqual(self.registerpage.check_password_strength('12345678'), '')
+        self.assertNotEqual(self.registerpage.check_password_strength('________'), '')
+        self.assertEqual(self.registerpage.check_password_strength('Aaaaaaaa'), '')
+        self.assertEqual(self.registerpage.check_password_strength('aAAAAAAA'), '')
+        self.assertEqual(self.registerpage.check_password_strength('_aaaaaaa'), '')
+        self.assertEqual(self.registerpage.check_password_strength('1aaaaaaa'), '')
+        
+
+    def test_is_valid_email(self):
+        self.homepage.click_register_button()
+        self.assertNotEqual(self.registerpage.is_valid_email('example123@gmail.'), '')
+        self.assertNotEqual(self.registerpage.is_valid_email('example123gmail.'), '')
+        self.assertNotEqual(self.registerpage.is_valid_email('example123gmail.com'), '')
+        self.assertNotEqual(self.registerpage.is_valid_email('example123gmailcom'), '')
+        self.assertEqual(self.registerpage.is_valid_email('example123@gmail.com'), '')
+        self.assertEqual(self.registerpage.is_valid_email('example123@gmail.ru'), '')
+        self.assertEqual(self.registerpage.is_valid_email('example123@zxc.ru'), '')
+
+
     def tearDown(self):
         self.driver.close()
 
